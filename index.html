@@ -46,7 +46,7 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
-          <a class="main-nav-link" href="/">Contact me</a>
+          <a class="main-nav-link" href="/">Contact</a>
         
       </nav>
       <nav id="sub-nav">
@@ -61,6 +61,52 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Google-2016-面试题-数组补丁" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Google-2016-面试题-数组补丁/" class="article-date">
+  <time datetime="2016-04-27T09:09:44.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Google-2016-面试题-数组补丁/">Google 2016 面试题|数组补丁</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。</p>
+<p><strong>Example：</strong><br>给出字符串”eceba”，k = 2<br>输出答案3，最长包含最多2个不同字符的子串为”ece”</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^3)。聪明的读者肯定想到了第二重和第三重循环可以合并，因为之前的统计信息可以继续使用而不需要每一次重新统计。这样的话穷举子串的开始位置和结束位置，复杂度是O(n^2)。如果在面试时提出了这个算法，面试官首先会表示认同，然后希望你进行优化。我们来看看如何进行优化。</p>
+<p>在统计的过程中我们可以发现，当穷举的开始位置改变时我们会选择重新统计，但其实当开始位置改变时，我们之前记录的大部分信息都是有用的，我们只需在原有的统计结果上稍作修改。我们在两层for循环的时候其实会发现我们内层的fo循环其实并不需要每次都再重复遍历。比如外层for循环指针i每次向前移动变成i+1的时候，内层for循环的j没必要每次都退回到i的位置，其实是可以保留在j的位置不变的。因为可以证明对于从i+1到j-1这些情况都不会出现重复的元素，所以我们只用考虑从i+1到j就可以了。</p>
+<p>分析一下这个算法的时间复杂度，虽然我们会用到两重循环（请看参考程序），但是因为这两个指针只增不减，每次循环指针增加1，因此while循环总共只会进入n次（n = s.length( ))，所以时间复杂度是O(n)。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class Solution&#123;</span><br><span class="line">  /**</span><br><span class="line">   * @param s: A string</span><br><span class="line">   * @return : The length of the longest substring</span><br><span class="line">   *           that contains at most k distinct characters.</span><br><span class="line">   */</span><br><span class="line">   public int lengthOfLongestKDistinct(String s, int k)&#123;</span><br><span class="line">     int maxLen = 0;</span><br><span class="line">     // Key: letter; value: the number of occurrences.</span><br><span class="line">     Map&lt;Character, Integer&gt; map = new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">     int i, j = 0;</span><br><span class="line">     char c;</span><br><span class="line">     for (i = 0; i &lt; s.length(); i++)&#123;</span><br><span class="line">       while (j &lt; s.length())&#123;</span><br><span class="line">         c = s.charAt(j);</span><br><span class="line">         if(map.containsKey(c))&#123;</span><br><span class="line">           map.put(c, map.get(c) + 1);</span><br><span class="line">         &#125; else &#123;</span><br><span class="line">           if (map.size() == k)</span><br><span class="line">             break;</span><br><span class="line">           map.put(c, 1);</span><br><span class="line">         &#125;</span><br><span class="line">         j++;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       maxLen = Math.max(maxLen, j - i);</span><br><span class="line">       c = s.charAt(i);</span><br><span class="line">       if(map.containsKey(c))&#123;</span><br><span class="line">         int count = map.get(c);</span><br><span class="line">         if (count &gt; 1) &#123;</span><br><span class="line">           map.put(c, count - 1);</span><br><span class="line">         &#125; else &#123;</span><br><span class="line">           map.remove(c);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     return maxLen;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>这是一道很有区分度的题目，有O(n^3),O(n^2),O(nlogn)（follow up）,O(n)时间复杂度的做法。先提出一种可行算法，通过一步步分析、优化，最后提出O(n)的最优算法并完成代码就可以达到hire的程度。</p>
+<h2 id="相关练习"><a href="#相关练习" class="headerlink" title="相关练习"></a>相关练习</h2><p><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="external">minimum-size-subarray-sum</a><br><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">longest-without-repeating-characters</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://czd619.github.io/Google-2016-面试题-数组补丁/" data-id="cinio6hnu00001oejdcwkgs1p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Markdown-Syntax" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -145,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://czd619.github.io/Markdown-Syntax/" data-id="cinhhcedo0000mcej4hlp2cif" class="article-share-link">Share</a>
+      <a data-url="http://czd619.github.io/Markdown-Syntax/" data-id="cinio6hp500051oej1uk4yqdk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -189,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://czd619.github.io/My-new-Post/" data-id="cinhhcedy0001mcejlrv62brl" class="article-share-link">Share</a>
+      <a data-url="http://czd619.github.io/My-new-Post/" data-id="cinio6hp500061oej1o8gzrng" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travelling/">Travelling</a></li></ul>
@@ -213,7 +259,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travelling/">Travelling</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travelling/">Travelling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
     </div>
   </div>
 
@@ -223,7 +269,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Travelling/" style="font-size: 10px;">Travelling</a>
+      <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Travelling/" style="font-size: 10px;">Travelling</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
     </div>
   </div>
 
@@ -232,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li></ul>
     </div>
   </div>
 
@@ -243,6 +289,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/Google-2016-面试题-数组补丁/">Google 2016 面试题|数组补丁</a>
+          </li>
         
           <li>
             <a href="/Markdown-Syntax/">Markdown Syntax</a>
@@ -276,7 +326,7 @@
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/" class="mobile-nav-link">Contact me</a>
+    <a href="/" class="mobile-nav-link">Contact</a>
   
 </nav>
     
