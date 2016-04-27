@@ -5,22 +5,27 @@
   
   <title>Google 2016 面试题|数组补丁 | Daniel Chen @Github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。
+  <meta name="description" content="From jiuzhang
+题目描述给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。
 Example：给出字符串”eceba”，k = 2输出答案3，最长包含最多2个不同字符的子串为”ece”
-解题思路最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^3)。聪明的读者肯定想到了第">
+解题思路最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google 2016 面试题|数组补丁">
 <meta property="og:url" content="http://czd619.github.io/Google-2016-面试题-数组补丁/index.html">
 <meta property="og:site_name" content="Daniel Chen @Github.io">
-<meta property="og:description" content="题目描述给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。
+<meta property="og:description" content="From jiuzhang
+题目描述给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。
 Example：给出字符串”eceba”，k = 2输出答案3，最长包含最多2个不同字符的子串为”ece”
-解题思路最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^3)。聪明的读者肯定想到了第">
-<meta property="og:updated_time" content="2016-04-27T09:38:57.553Z">
+解题思路最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^">
+<meta property="og:image" content="http://s8.sinaimg.cn/large/005ZnYdWgy6VgxxiOgLb7&690">
+<meta property="og:updated_time" content="2016-04-27T09:46:41.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google 2016 面试题|数组补丁">
-<meta name="twitter:description" content="题目描述给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。
+<meta name="twitter:description" content="From jiuzhang
+题目描述给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。
 Example：给出字符串”eceba”，k = 2输出答案3，最长包含最多2个不同字符的子串为”ece”
-解题思路最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^3)。聪明的读者肯定想到了第">
+解题思路最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^">
+<meta name="twitter:image" content="http://s8.sinaimg.cn/large/005ZnYdWgy6VgxxiOgLb7&690">
   
   
     <link rel="icon" href="/favicon.png">
@@ -89,7 +94,8 @@ Example：给出字符串”eceba”，k = 2输出答案3，最长包含最多2�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。</p>
+        <p><img src="http://s8.sinaimg.cn/large/005ZnYdWgy6VgxxiOgLb7&amp;690" alt=""><br><strong>From <a href="http://www.jiuzhang.com/qa/" target="_blank" rel="external">jiuzhang</a></strong></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。</p>
 <p><strong>Example：</strong><br>给出字符串”eceba”，k = 2<br>输出答案3，最长包含最多2个不同字符的子串为”ece”</p>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^3)。聪明的读者肯定想到了第二重和第三重循环可以合并，因为之前的统计信息可以继续使用而不需要每一次重新统计。这样的话穷举子串的开始位置和结束位置，复杂度是O(n^2)。如果在面试时提出了这个算法，面试官首先会表示认同，然后希望你进行优化。我们来看看如何进行优化。</p>
 <p>在统计的过程中我们可以发现，当穷举的开始位置改变时我们会选择重新统计，但其实当开始位置改变时，我们之前记录的大部分信息都是有用的，我们只需在原有的统计结果上稍作修改。我们在两层for循环的时候其实会发现我们内层的fo循环其实并不需要每次都再重复遍历。比如外层for循环指针i每次向前移动变成i+1的时候，内层for循环的j没必要每次都退回到i的位置，其实是可以保留在j的位置不变的。因为可以证明对于从i+1到j-1这些情况都不会出现重复的元素，所以我们只用考虑从i+1到j就可以了。</p>
@@ -101,7 +107,7 @@ Example：给出字符串”eceba”，k = 2输出答案3，最长包含最多2�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://czd619.github.io/Google-2016-面试题-数组补丁/" data-id="cinio6hnu00001oejdcwkgs1p" class="article-share-link">Share</a>
+      <a data-url="http://czd619.github.io/Google-2016-面试题-数组补丁/" data-id="ciniogkkz0000t0ej8167wlgc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
