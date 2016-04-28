@@ -53,7 +53,7 @@
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://czd619.github.io"></form>
@@ -63,6 +63,56 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Google-2016-面试题-不构造树的情况下验证先序遍历" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Google-2016-面试题-不构造树的情况下验证先序遍历/" class="article-date">
+  <time datetime="2016-04-28T12:00:01.000Z" itemprop="datePublished">2016-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Google-2016-面试题-不构造树的情况下验证先序遍历/">Google 2016 面试题 | 不构造树的情况下验证先序遍历</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://img.taopic.com/uploads/allimg/110904/40024-110Z420430289.jpg" alt=""><br><strong>From <a href="http://www.jiuzhang.com/qa/" target="_blank" rel="external">jiuzhang</a></strong></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个字符序列，问该序列是否是一棵合法的二叉树的先序遍历？<br>找到一种不需要构造二叉树的方法。<br><strong>For example：</strong><br>“9,3,4,#,#,1,#,#,2,#,6,#,#”<br>是下面这颗二叉树的先序遍历。其中＃代表空节点。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>一棵合法的二叉树去掉某个叶子节点后仍是合法的二叉树。在给出的字符序列中，叶子节点有很明显的特征，即叶子节点之后一定紧跟两个空节点＃。通过不断的把number,#,#的子串缩成空节点#(把number,#,#子串替换为#)，如果最后字符序列可以缩短到只有一个字符＃，那它就是我们要找的合法的先序遍历了。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">  public boolean isValidSerialization(String preorder) &#123;</span><br><span class="line">    String s = preorder;</span><br><span class="line">    boolean flag = true;</span><br><span class="line">    while (s.length() &gt; 1) &#123;</span><br><span class="line">      int index = s.indexOf(&quot;,#,#&quot;);</span><br><span class="line">      if (index &lt; 0)&#123;</span><br><span class="line">        flag = false;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      int start = index;</span><br><span class="line">      while (start &gt; 0 &amp;&amp; s.charAt(start - 1) != &apos;,&apos;) &#123;</span><br><span class="line">        start --;</span><br><span class="line">      &#125;</span><br><span class="line">      if (s.charAt(start) == &apos;#&apos;) &#123;</span><br><span class="line">        flag = false;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      s = s.substring(0, start) + s.substring(index + 3);</span><br><span class="line">    &#125;</span><br><span class="line">    if (s.equals(&quot;#&quot;) &amp;&amp; flag)</span><br><span class="line">      return true;</span><br><span class="line">    else</span><br><span class="line">      return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>此题可以用暴力搜索解决，但线性复杂度算法也不难想到。笔者认为写出以上解法，可以达到hire, 而如果用stack解法，则可以 storng hire.</p>
+<h2 id="相关练习"><a href="#相关练习" class="headerlink" title="相关练习"></a>相关练习</h2><p>树的操作时面试中的高频题目，基础操作（遍历，求深度，求path value等）需熟练掌握。</p>
+<p><a href="https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/" target="_blank" rel="external">Verify Preorder Serialization of a Binary Tree</a></p>
+<p><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="external">Binary Tree Preorder Traversal</a></p>
+<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="external">Binary Tree Level Order Traversal</a></p>
+<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="external">Binary Tree Level Order Traversal II</a></p>
+<p><a href="https://leetcode.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="external">Binary Tree Postorder Traversal</a> (思考非递归算法)</p>
+<p><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="external">Construct Binary Tree from Inorder and Postorder Traversal</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://czd619.github.io/Google-2016-面试题-不构造树的情况下验证先序遍历/" data-id="cink9pgvb0000lgeja5g87buc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Google-2016-面试题-数组补丁" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -99,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://czd619.github.io/Google-2016-面试题-数组补丁/" data-id="ciniu8pnp0000w0ejkqbr2n9y" class="article-share-link">Delen</a>
+      <a data-url="http://czd619.github.io/Google-2016-面试题-数组补丁/" data-id="cink9pgvn0001lgejoajqs8qf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
@@ -194,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://czd619.github.io/Markdown-Syntax/" data-id="ciniu8po40001w0eje43tkow5" class="article-share-link">Delen</a>
+      <a data-url="http://czd619.github.io/Markdown-Syntax/" data-id="cink9pgvr0003lgeju4d0j33i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -238,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://czd619.github.io/My-new-Post/" data-id="ciniu8poj0003w0ejogqgqtka" class="article-share-link">Delen</a>
+      <a data-url="http://czd619.github.io/My-new-Post/" data-id="cink9pgwf000dlgeje2bdvkzx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travelling/">Travelling</a></li></ul>
@@ -260,7 +310,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Labels</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travelling/">Travelling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
     </div>
@@ -272,14 +322,14 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Travelling/" style="font-size: 10px;">Travelling</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+      <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Travelling/" style="font-size: 10px;">Travelling</a> <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li></ul>
     </div>
@@ -289,9 +339,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/Google-2016-面试题-不构造树的情况下验证先序遍历/">Google 2016 面试题 | 不构造树的情况下验证先序遍历</a>
+          </li>
         
           <li>
             <a href="/Google-2016-面试题-数组补丁/">Google 2016 面试题 | 数组补丁</a>
