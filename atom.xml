@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Daniel Chen @Github.io</title>
+  <title>DanChen</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://czd619.github.io/"/>
-  <updated>2016-04-28T12:52:02.271Z</updated>
+  <updated>2016-04-29T05:21:50.364Z</updated>
   <id>http://czd619.github.io/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://czd619.github.io/Google-2016-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%8D%E6%9E%84%E9%80%A0%E6%A0%91%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%AA%8C%E8%AF%81%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
     <id>http://czd619.github.io/Google-2016-面试题-不构造树的情况下验证先序遍历/</id>
     <published>2016-04-28T12:00:01.000Z</published>
-    <updated>2016-04-28T12:52:02.271Z</updated>
+    <updated>2016-04-29T05:21:50.364Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/tree.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jiuzhang&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;div align=&quot;center&quot;&gt;&lt;br&gt;  &lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/tree.jpg&quot; width=&quot;700&quot; height=&quot;500&quot; alt=&quot;&quot; align=&quot;center/&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jiuzhang&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给出一个字符序列，问该序列是否是一棵合法的二叉树的先序遍历？&lt;br&gt;找到一种不需要构造二叉树的方法。&lt;br&gt;&lt;strong&gt;For example：&lt;/strong&gt;&lt;br&gt;“9,3,4,#,#,1,#,#,2,#,6,#,#”&lt;br&gt;是下面这颗二叉树的先序遍历。其中＃代表空节点。&lt;/p&gt;
 &lt;h2 id=&quot;解题思路&quot;&gt;&lt;a href=&quot;#解题思路&quot; class=&quot;headerlink&quot; title=&quot;解题思路&quot;&gt;&lt;/a&gt;解题思路&lt;/h2&gt;&lt;p&gt;一棵合法的二叉树去掉某个叶子节点后仍是合法的二叉树。在给出的字符序列中，叶子节点有很明显的特征，即叶子节点之后一定紧跟两个空节点＃。通过不断的把number,#,#的子串缩成空节点#(把number,#,#子串替换为#)，如果最后字符序列可以缩短到只有一个字符＃，那它就是我们要找的合法的先序遍历了。&lt;/p&gt;
 &lt;h2 id=&quot;参考代码&quot;&gt;&lt;a href=&quot;#参考代码&quot; class=&quot;headerlink&quot; title=&quot;参考代码&quot;&gt;&lt;/a&gt;参考代码&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class Solution &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  public boolean isValidSerialization(String preorder) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    String s = preorder;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    boolean flag = true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    while (s.length() &amp;gt; 1) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      int index = s.indexOf(&amp;quot;,#,#&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      if (index &amp;lt; 0)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        flag = false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        break;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      int start = index;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      while (start &amp;gt; 0 &amp;amp;&amp;amp; s.charAt(start - 1) != &amp;apos;,&amp;apos;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        start --;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      if (s.charAt(start) == &amp;apos;#&amp;apos;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        flag = false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        break;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      s = s.substring(0, start) + s.substring(index + 3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if (s.equals(&amp;quot;#&amp;quot;) &amp;amp;&amp;amp; flag)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;算法分析&quot;&gt;&lt;a href=&quot;#算法分析&quot; class=&quot;headerlink&quot; title=&quot;算法分析&quot;&gt;&lt;/a&gt;算法分析&lt;/h2&gt;&lt;p&gt;此题可以用暴力搜索解决，但线性复杂度算法也不难想到。笔者认为写出以上解法，可以达到hire, 而如果用stack解法，则可以 storng hire.&lt;/p&gt;
+&lt;h2 id=&quot;算法分析&quot;&gt;&lt;a href=&quot;#算法分析&quot; class=&quot;headerlink&quot; title=&quot;算法分析&quot;&gt;&lt;/a&gt;算法分析&lt;/h2&gt;&lt;p&gt;此题可以用暴力搜索解决，但线性复杂度算法也不难想到。写出以上解法，可以达到hire, 而如果用stack解法，则可以 storng hire.&lt;/p&gt;
 &lt;h2 id=&quot;相关练习&quot;&gt;&lt;a href=&quot;#相关练习&quot; class=&quot;headerlink&quot; title=&quot;相关练习&quot;&gt;&lt;/a&gt;相关练习&lt;/h2&gt;&lt;p&gt;树的操作时面试中的高频题目，基础操作（遍历，求深度，求path value等）需熟练掌握。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Verify Preorder Serialization of a Binary Tree&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/binary-tree-preorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Binary Tree Preorder Traversal&lt;/a&gt;&lt;/p&gt;
@@ -38,9 +38,11 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/tree.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_blank&quot; r
+      &lt;p&gt;&lt;div align=&quot;center&quot;&gt;&lt;br&gt;  &lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/tree.jpg&quot; width=&quot;700&quot; height=&quot;500&quot; alt=&quot;&quot; align=&quot;center/&quot;&gt;&lt;br&gt;&lt;
     
     </summary>
+    
+      <category term="面试题" scheme="http://czd619.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     
       <category term="Java" scheme="http://czd619.github.io/tags/Java/"/>
@@ -54,9 +56,9 @@
     <link href="http://czd619.github.io/Google-2016-%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%95%B0%E7%BB%84%E8%A1%A5%E4%B8%81/"/>
     <id>http://czd619.github.io/Google-2016-面试题-数组补丁/</id>
     <published>2016-04-27T09:09:44.000Z</published>
-    <updated>2016-04-27T09:51:15.951Z</updated>
+    <updated>2016-04-29T05:21:51.772Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/googleLogo.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jiuzhang&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/googleLogo.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jiuzhang&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给定一个字符串，找到最长的包含最多k个不同字符的子串，输出最长子串的长度即可。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example：&lt;/strong&gt;&lt;br&gt;给出字符串”eceba”，k = 2&lt;br&gt;输出答案3，最长包含最多2个不同字符的子串为”ece”&lt;/p&gt;
 &lt;h2 id=&quot;解题思路&quot;&gt;&lt;a href=&quot;#解题思路&quot; class=&quot;headerlink&quot; title=&quot;解题思路&quot;&gt;&lt;/a&gt;解题思路&lt;/h2&gt;&lt;p&gt;最暴力的做法是穷举所有可能的子串，一共有n^2级别个不同的子串，然后对于每一个子串统计有多少不同的字符，如果少于k个就更新答案。这是一个三重循环的穷举，复杂度是O(n^3)。聪明的读者肯定想到了第二重和第三重循环可以合并，因为之前的统计信息可以继续使用而不需要每一次重新统计。这样的话穷举子串的开始位置和结束位置，复杂度是O(n^2)。如果在面试时提出了这个算法，面试官首先会表示认同，然后希望你进行优化。我们来看看如何进行优化。&lt;/p&gt;
@@ -69,9 +71,11 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;/images/googleLogo.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jiuzhang&lt;/
+      &lt;p&gt;&lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/googleLogo.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;From &lt;a href=&quot;http://www.jiuzhang.com/qa/&quot; target=&quot;_bl
     
     </summary>
+    
+      <category term="面试题" scheme="http://czd619.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     
       <category term="Java" scheme="http://czd619.github.io/tags/Java/"/>
@@ -85,7 +89,7 @@
     <link href="http://czd619.github.io/Markdown-Syntax/"/>
     <id>http://czd619.github.io/Markdown-Syntax/</id>
     <published>2014-04-26T07:29:10.000Z</published>
-    <updated>2016-04-26T12:51:57.711Z</updated>
+    <updated>2016-04-29T05:21:24.042Z</updated>
     
     <content type="html">&lt;h2 id=&quot;I-What-is-Markdown&quot;&gt;&lt;a href=&quot;#I-What-is-Markdown&quot; class=&quot;headerlink&quot; title=&quot;I. What is Markdown&quot;&gt;&lt;/a&gt;I. What is Markdown&lt;/h2&gt;&lt;h3 id=&quot;Targets-of-Markdown&quot;&gt;&lt;a href=&quot;#Targets-of-Markdown&quot; class=&quot;headerlink&quot; title=&quot;Targets of Markdown&quot;&gt;&lt;/a&gt;Targets of Markdown&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Markdown&lt;/em&gt; is a text-to-HTML conversion tool for web writers &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;by John Gruber @Daringfireball&lt;/a&gt;. Thus other details can be seen in author’s website above.&lt;/p&gt;
 &lt;h3 id=&quot;Tools-for-Markdown&quot;&gt;&lt;a href=&quot;#Tools-for-Markdown&quot; class=&quot;headerlink&quot; title=&quot;Tools for Markdown&quot;&gt;&lt;/a&gt;Tools for Markdown&lt;/h3&gt;&lt;p&gt;Most people recommend &lt;strong&gt;&lt;a href=&quot;http://mouapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mou&lt;/a&gt;&lt;/strong&gt; on Mac OS. While on Windows, here are &lt;strong&gt;&lt;a href=&quot;http://www.markdownpad.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MarkdownPad&lt;/a&gt;&lt;/strong&gt; (much better than the followings …) and &lt;strong&gt;&lt;a href=&quot;http://code52.org/DownmarkerWPF/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MarkPad&lt;/a&gt;&lt;/strong&gt; (er… it’s too slow at least for me). For convenience, I just use &lt;strong&gt;&lt;a href=&quot;https://atom.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Atom&lt;/a&gt;&lt;/strong&gt; by Google with MD plugin, it’s enough for me.&lt;/p&gt;
@@ -152,8 +156,10 @@
     
     </summary>
     
+      <category term="Web" scheme="http://czd619.github.io/categories/Web/"/>
     
-      <category term="HTML" scheme="http://czd619.github.io/tags/HTML/"/>
+    
+      <category term="Markdown" scheme="http://czd619.github.io/tags/Markdown/"/>
     
   </entry>
   
@@ -162,10 +168,10 @@
     <link href="http://czd619.github.io/My-new-Post/"/>
     <id>http://czd619.github.io/My-new-Post/</id>
     <published>2013-04-02T07:02:37.000Z</published>
-    <updated>2016-04-26T13:07:21.505Z</updated>
+    <updated>2016-04-29T05:18:35.458Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;First-Post&quot;&gt;&lt;a href=&quot;#First-Post&quot; class=&quot;headerlink&quot; title=&quot;First Post&quot;&gt;&lt;/a&gt;First Post&lt;/h2&gt;&lt;h3 id=&quot;Use-my-pics-to-test-Hexo&quot;&gt;&lt;a href=&quot;#Use-my-pics-to-test-Hexo&quot; class=&quot;headerlink&quot; title=&quot;Use my pics to test Hexo~~&quot;&gt;&lt;/a&gt;Use my pics to test Hexo~~&lt;/h3&gt;&lt;p&gt;Ducks in Houhai Park @Beijing ~&lt;br&gt;&lt;img src=&quot;images\backSea.jpg&quot; alt=&quot;Ducks in Houhai Park by Dan.Chen with Jianguo&quot;&gt;&lt;/p&gt;
-&lt;div align=&quot;center&quot;&gt;&lt;br&gt;  &lt;img src=&quot;images\backSea.jpg&quot; width=&quot;300&quot; height=&quot;500&quot; alt=&quot;&quot; align=&quot;center/&quot;&gt;&lt;br&gt;  &lt;center&gt;by html&lt;/center&gt;&lt;br&gt;&lt;/div&gt;
+    <content type="html">&lt;h2 id=&quot;First-Post&quot;&gt;&lt;a href=&quot;#First-Post&quot; class=&quot;headerlink&quot; title=&quot;First Post&quot;&gt;&lt;/a&gt;First Post&lt;/h2&gt;&lt;h3 id=&quot;Use-my-pics-to-test-Hexo&quot;&gt;&lt;a href=&quot;#Use-my-pics-to-test-Hexo&quot; class=&quot;headerlink&quot; title=&quot;Use my pics to test Hexo~~&quot;&gt;&lt;/a&gt;Use my pics to test Hexo~~&lt;/h3&gt;&lt;p&gt;Ducks in Houhai Park @Beijing ~&lt;br&gt;&lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/backSea.jpg&quot; alt=&quot;Ducks in Houhai Park by Dan.Chen with Jianguo&quot;&gt;&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;&lt;br&gt;  &lt;img src=&quot;http://7xti7c.com2.z0.glb.clouddn.com/backSea.jpg&quot; width=&quot;300&quot; height=&quot;500&quot; alt=&quot;&quot; align=&quot;center/&quot;&gt;&lt;br&gt;  &lt;center&gt;by html&lt;/center&gt;&lt;br&gt;&lt;/div&gt;
 
 
 
@@ -177,6 +183,8 @@
       &lt;h2 id=&quot;First-Post&quot;&gt;&lt;a href=&quot;#First-Post&quot; class=&quot;headerlink&quot; title=&quot;First Post&quot;&gt;&lt;/a&gt;First Post&lt;/h2&gt;&lt;h3 id=&quot;Use-my-pics-to-test-Hexo&quot;&gt;&lt;a href
     
     </summary>
+    
+      <category term="LifeInBeijing" scheme="http://czd619.github.io/categories/LifeInBeijing/"/>
     
     
       <category term="Travelling" scheme="http://czd619.github.io/tags/Travelling/"/>
